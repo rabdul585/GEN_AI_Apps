@@ -1,0 +1,29 @@
+# Core Framework
+streamlit
+python-dotenv
+
+# LangChain
+langchain
+langchain-openai
+langchain-community
+
+# LLM & Embeddings
+openai
+
+# Vector Store
+faiss-cpu
+
+# Document Loaders
+pypdf
+python-docx
+
+# Web Search
+tavily-python
+
+# Knowledge Graph
+neo4j
+pyvis
+
+# Utilities
+typing-extensions
+pydantic

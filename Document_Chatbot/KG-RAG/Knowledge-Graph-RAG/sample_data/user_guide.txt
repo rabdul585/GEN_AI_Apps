@@ -1,0 +1,28 @@
+Bandwidth Partitioning & Allocation 
+ 
+Properly allocating bandwidth to multiple services (IP Transit, DCI( Data Center Interconnection) on a single physical interface can be a new reality for many customers. Both rate limits and fixed circuits are specific bandwidth controls that can be implemented to ensure bandwidth for critical workloads is always available. It does not conflict with other services sharing the same interface. To ensure proper partitioning of the 10G interface, fixed circuits can be deployed for non-critical workloads or backup circuits that do not need the burstable capacity to satisfy traffic demand. For production workloads, burstable circuits can be deployed to ensure high-demand traffic spikes can be met with optimal connecting without users experiencing latency or packet loss. Rate limits could also be implemented on this burstable circuit to ensure a certain demand level of traffic is met by a specified upper limit, with overage charges past this amount being unacceptable from a financial perspective. 
+ 
+Please see below for an example highlighting the allocation of a Flexential Fabric physical interface into multiple services, resulting in a fully utilized 10 Gbps port with multiple services supporting production and backup workloads. 
+Aggregating IP transit and DCI services on a single physical interface can concern customers who are architecting fully fault-tolerant solutions. Flexential Fabric interfaces do not have to be partitioned into multiple virtual segments. This is up to the user's discretion, as workloads, services, and interconnection products can all reside on separate physical ports if desired. 
+
+IPv4 vs IPv6 
+Internet Protocol (IP) is a defined set of rules that helps route data packets over the internet so traffic can arrive at its proper destination. There are two versions of IP: version 4, which is older, and version 6, which is newer. IPv4 is still the most common, using a 32-bit address yielding over 4 billion unique address combinations. IPv6 was developed to solve the inevitable exhaustion of IP addresses in the traditional IPv4 format. The newer version uses a 128-bit address, yielding exponentially (literally 2^128) an infinite number of addresses. The notations of each address are different. Please see below:
+•	IPv4: 248.76.225.197
+•	IPv6: 4209:eb90:80c1:4c40:e475:7c9b:aa78:4767
+ 
+While less than 1% of networks use IPv6, it is more advanced than IPv4. It has better features like more efficient routing, bigger payloads, and simplified header formats. IP bandwidth supports IPv4 and IPv6 addressing, and users should select which version they are most comfortable with on their network. Please confirm the compatibility of running one address version over the other in your network, and remember that dual-stack is the best for having both IPv4 and IPv6 enabled. 
+ 
+ SLA (Service Level Agreement)
+ 
+Services on single interfaces are subjected to Flexential standard 99.99% uptime SLA. Services delivered on redundant interfaces are permitted a 100% uptime SLA. Please consult your MSA for exact SLA language, terms, and conditions.
+ 
+ Overages and 95th Percentile Calculations
+ 
+For IP Bandwidth or IP Transit services, Flexential polls interface on a 5-minute basis, looking at ingress and egress utilization. At the end of the month, Flexential uses a standard 95th percentile function to calculate a 95th percentile value for both ingress and egress. The larger two values are selected and held against the user's committed bandwidth policy. The overage value (if any) is billed to the user at the existing contracted rate. Flexential does not apply an overage penalty, rate, or value.
+ For DCI, Interconnection Mesh, or other forms of 'Transport' services, Flexential performs the same process above but only accounts for the ingress 95th percentile value. By excluding egress, users are not at risk of getting overage bills for the same traffic across two interfaces.
+ WAN Transit Assignment
+The WAN Transit assignment connects the Provider Edge (PE) to the Customer Edge (CE) or Customer Provided Equipment (CPE). This block is typically small and not intended to provide IPs to actual hosts or specific services. Flexential, by default, provides a /31 to conserve IP assignments, but a /30 is also available. Some older equipment, specifically running older firmware, may not support a /31 assignment. 
+ 
+In a /31 assignment, the first usable IP address is assigned to Flexential and the second useable address is assigned to the customer (there is no network or broadcast address in a /31 as it is only for point-to-point connections). In a /30 WAN assignment, the first IP address is the network IP, the first is Flexenital, and the second is the customer. The final IP address is reserved for the broadcast address. 
+ 
+The default WAN IP address block assigned for FHRP configurations is a /29. In a /29 WAN assignment, the first IP address is the network IP, the first usable address is the virtual IP (VIP), the next two usable addresses in the block are assigned to Flexential's primary and redundant routers, the remaining usable addresses are assigned to the customer, and the final IP address is reserved for the broadcast address.   
