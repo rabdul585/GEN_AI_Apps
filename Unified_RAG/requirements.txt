@@ -1,0 +1,22 @@
+streamlit
+python-dotenv
+
+# LangChain core + integrations
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+langchain-huggingface
+
+# Embeddings & vector store
+sentence-transformers
+faiss-cpu
+
+# PDF loading
+pypdf
+
+# HuggingFace core (needed for some embedding models)
+huggingface-hub
+
+# To avoid tokenizers parallelism issues
+tokenizers
