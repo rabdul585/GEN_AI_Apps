@@ -2,6 +2,8 @@
 
 A **3-file modular** RAG (Retrieval-Augmented Generation) system for OCR processing and intelligent document Q&A.
 
+## Demo link - https://youtu.be/ikHKeFaCyns
+
 ## 📁 Project Structure
 
 ```
